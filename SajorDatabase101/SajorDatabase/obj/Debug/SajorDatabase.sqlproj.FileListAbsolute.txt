@@ -1,0 +1,6 @@
+D:\SajorDatabase101\SajorDatabase\bin\Debug\SajorDatabase.dacpac
+D:\SajorDatabase101\SajorDatabase\bin\Debug\SajorDatabase.dll
+D:\SajorDatabase101\SajorDatabase\bin\Debug\SajorDatabase.pdb
+D:\SajorDatabase101\SajorDatabase\obj\Debug\SajorDatabase.sqlproj.AssemblyReference.cache
+D:\SajorDatabase101\SajorDatabase\obj\Debug\SajorDatabase.dll
+D:\SajorDatabase101\SajorDatabase\obj\Debug\SajorDatabase.pdb

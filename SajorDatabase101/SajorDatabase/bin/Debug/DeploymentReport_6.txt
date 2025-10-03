@@ -1,0 +1,19 @@
+﻿** Highlights
+     Tables that will be recreated with data migrated
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Rename
+       [dbo].[Employee].[Emp_ID] (Column)
+     Alter
+       [dbo].[Employee] (Table)
+     Create
+       [dbo].[CreateEmployee] (Procedure)
+
+** Supporting actions
