@@ -1,0 +1,27 @@
+﻿** Highlights
+     Tables that will be recreated with data migrated
+       [dbo].[Employee]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The type for column Emp_ID in table [dbo].[Employee] is currently  NVARCHAR (50) NOT NULL but is being changed to  INT
+         IDENTITY (1, 1) NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible
+         with type  INT IDENTITY (1, 1) NOT NULL.
+
+** User actions
+     Recreate table
+       [dbo].[Employee] (Table)
+     Alter
+       [dbo].[CreateEmployee] (Procedure)
+       [dbo].[DeleteEmployee] (Procedure)
+       [dbo].[Get_Employee_ID] (Procedure)
+       [dbo].[UpdateEmployee] (Procedure)
+       [dbo].[Read_Employee] (Procedure)
+
+** Supporting actions
+
+The type for column Emp_ID in table [dbo].[Employee] is currently  NVARCHAR (50) NOT NULL but is being changed to  INT IDENTITY (1, 1) NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type  INT IDENTITY (1, 1) NOT NULL.
+If this deployment is executed, changes to [dbo].[Employee] might introduce run-time errors in [dbo].[ReadEmployee].
+

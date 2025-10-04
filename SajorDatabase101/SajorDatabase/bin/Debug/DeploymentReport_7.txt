@@ -1,0 +1,18 @@
+﻿** Highlights
+     Tables that will be recreated with data migrated
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[DeleteEmployee] (Procedure)
+       [dbo].[Get_Employee_ID] (Procedure)
+       [dbo].[ReadEmployee] (Procedure)
+       [dbo].[UpdateEmployee] (Procedure)
+
+** Supporting actions
