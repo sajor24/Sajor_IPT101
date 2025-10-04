@@ -40,121 +40,81 @@ USE [$(DatabaseName)];
 
 
 GO
-IF EXISTS (SELECT 1
-           FROM   [master].[dbo].[sysdatabases]
-           WHERE  [name] = N'$(DatabaseName)')
-    BEGIN
-        ALTER DATABASE [$(DatabaseName)]
-            SET ARITHABORT ON,
-                CONCAT_NULL_YIELDS_NULL ON,
-                CURSOR_DEFAULT LOCAL 
-            WITH ROLLBACK IMMEDIATE;
-    END
+PRINT N'Starting rebuilding table [dbo].[Employee]...';
 
 
 GO
-IF EXISTS (SELECT 1
-           FROM   [master].[dbo].[sysdatabases]
-           WHERE  [name] = N'$(DatabaseName)')
-    BEGIN
-        ALTER DATABASE [$(DatabaseName)]
-            SET PAGE_VERIFY NONE,
-                DISABLE_BROKER 
-            WITH ROLLBACK IMMEDIATE;
-    END
+BEGIN TRANSACTION;
 
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 
-GO
-ALTER DATABASE [$(DatabaseName)]
-    SET TARGET_RECOVERY_TIME = 0 SECONDS 
-    WITH ROLLBACK IMMEDIATE;
+SET XACT_ABORT ON;
 
-
-GO
-IF EXISTS (SELECT 1
-           FROM   [master].[dbo].[sysdatabases]
-           WHERE  [name] = N'$(DatabaseName)')
-    BEGIN
-        ALTER DATABASE [$(DatabaseName)]
-            SET QUERY_STORE (QUERY_CAPTURE_MODE = ALL, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 367), MAX_STORAGE_SIZE_MB = 100) 
-            WITH ROLLBACK IMMEDIATE;
-    END
-
-
-GO
-PRINT N'Rename refactoring operation with key 62cba141-e3ad-4a44-ba39-6355c1b5c1e3 is skipped, element [dbo].[Employee].[Id] (SqlSimpleColumn) will not be renamed to Emp_ID';
-
-
-GO
-PRINT N'Creating Table [dbo].[Employee]...';
-
-
-GO
-CREATE TABLE [dbo].[Employee] (
-    [Emp_ID]    INT        NOT NULL,
-    [FirstName] NCHAR (50) NULL,
-    [LastName]  NCHAR (50) NULL,
-    [Age]       NCHAR (50) NULL,
-    [Position]  NCHAR (50) NULL,
+CREATE TABLE [dbo].[tmp_ms_xx_Employee] (
+    [Emp_ID]    INT           IDENTITY (1, 1) NOT NULL,
+    [FirstName] NVARCHAR (50) NULL,
+    [LastName]  NVARCHAR (50) NULL,
+    [Age]       NVARCHAR (50) NULL,
+    [Position]  NVARCHAR (50) NULL,
     PRIMARY KEY CLUSTERED ([Emp_ID] ASC)
 );
 
+IF EXISTS (SELECT TOP 1 1 
+           FROM   [dbo].[Employee])
+    BEGIN
+        SET IDENTITY_INSERT [dbo].[tmp_ms_xx_Employee] ON;
+        INSERT INTO [dbo].[tmp_ms_xx_Employee] ([Emp_ID], [FirstName], [LastName], [Age], [Position])
+        SELECT   [Emp_ID],
+                 [FirstName],
+                 [LastName],
+                 [Age],
+                 [Position]
+        FROM     [dbo].[Employee]
+        ORDER BY [Emp_ID] ASC;
+        SET IDENTITY_INSERT [dbo].[tmp_ms_xx_Employee] OFF;
+    END
+
+DROP TABLE [dbo].[Employee];
+
+EXECUTE sp_rename N'[dbo].[tmp_ms_xx_Employee]', N'Employee';
+
+COMMIT TRANSACTION;
+
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+
 
 GO
-PRINT N'Creating Procedure [dbo].[CreateEmployee]...';
+PRINT N'Creating Procedure [dbo].[Create_Employee]...';
 
 
 GO
-CREATE PROCEDURE [dbo].[CreateEmployee]
+CREATE PROCEDURE [dbo].[Create_Employee]
     @Emp_ID INT,
-    @FirstName NCHAR(50) = NULL,
-    @LastName NCHAR(50) = NULL,
-    @Age NCHAR(50) = NULL,
-    @Position NCHAR(50) = NULL
+    @FirstName NVARCHAR(50) = NULL,
+    @LastName  NVARCHAR(50) NULL,
+    @Age  NVARCHAR(50) NULL,
+    @Position NVARCHAR(50) = NULL
 AS
 BEGIN
     INSERT INTO [dbo].[Employee] ([Emp_ID], [FirstName], [LastName], [Age], [Position])
     VALUES (@Emp_ID, @FirstName, @LastName, @Age, @Position);
 END
 GO
-PRINT N'Creating Procedure [dbo].[DeleteEmployee]...';
+PRINT N'Creating Procedure [dbo].[Read_Employee]...';
 
 
 GO
-CREATE PROCEDURE [dbo].[DeleteEmployee]
-    @Emp_ID INT
-AS
-BEGIN
-    DELETE FROM [dbo].[Employee]
-    WHERE [Emp_ID] = @Emp_ID;
-END
-GO
-PRINT N'Creating Procedure [dbo].[Get_Employee_ID]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[Get_Employee_ID]
-    @Emp_ID INT
-AS
-BEGIN
-    SELECT * FROM [dbo].[Employee] AS a WHERE a.[Emp_ID] = @Emp_ID;
-END
-GO
-PRINT N'Creating Procedure [dbo].[ReadEmployee]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[ReadEmployee]
+CREATE PROCEDURE [dbo].[Read_Employee]
 AS
 BEGIN
     SELECT * FROM [dbo].[Employee];
 END
 GO
-PRINT N'Creating Procedure [dbo].[UpdateEmployee]...';
+PRINT N'Creating Procedure [dbo].[Update_Employee]...';
 
 
 GO
-CREATE PROCEDURE [dbo].[UpdateEmployee]
+CREATE PROCEDURE [dbo].[Update_Employee]
     @Emp_ID INT,
     @FirstName NCHAR(50) = NULL,
     @LastName NCHAR(50) = NULL,
@@ -171,18 +131,20 @@ BEGIN
     WHERE [Emp_ID] = @Emp_ID;
 END
 GO
--- Refactoring step to update target server with deployed transaction logs
+PRINT N'Refreshing Procedure [dbo].[DeleteEmployee]...';
 
-IF OBJECT_ID(N'dbo.__RefactorLog') IS NULL
-BEGIN
-    CREATE TABLE [dbo].[__RefactorLog] (OperationKey UNIQUEIDENTIFIER NOT NULL PRIMARY KEY)
-    EXEC sp_addextendedproperty N'microsoft_database_tools_support', N'refactoring log', N'schema', N'dbo', N'table', N'__RefactorLog'
-END
-GO
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '62cba141-e3ad-4a44-ba39-6355c1b5c1e3')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('62cba141-e3ad-4a44-ba39-6355c1b5c1e3')
 
 GO
+EXECUTE sp_refreshsqlmodule N'[dbo].[DeleteEmployee]';
+
+
+GO
+PRINT N'Refreshing Procedure [dbo].[Get_Employee_ID]...';
+
+
+GO
+EXECUTE sp_refreshsqlmodule N'[dbo].[Get_Employee_ID]';
+
 
 GO
 PRINT N'Update complete.';
