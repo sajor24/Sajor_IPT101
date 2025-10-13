@@ -1,0 +1,10 @@
+D:\SajorDatabase101\SajorDatabase\bin\Debug\SajorEmployee.dacpac
+D:\SajorDatabase101\SajorDatabase\bin\Debug\SajorDatabase.dll
+D:\SajorDatabase101\SajorDatabase\bin\Debug\SajorDatabase.pdb
+D:\SajorDatabase101\SajorDatabase\obj\Debug\SajorEmployee.sqlproj.AssemblyReference.cache
+D:\SajorDatabase101\SajorDatabase\obj\Debug\SajorDatabase.dll
+D:\SajorDatabase101\SajorDatabase\obj\Debug\SajorDatabase.pdb
+D:\SajorDatabase101\SajorDatabase\obj\Debug\Model.xml
+D:\SajorDatabase101\SajorDatabase\obj\Debug\refactor.xml
+D:\SajorDatabase101\SajorDatabase\obj\Debug\postdeploy.sql
+D:\SajorDatabase101\SajorDatabase\obj\Debug\predeploy.sql
