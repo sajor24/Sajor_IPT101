@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36616.10 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SajorWpfApp1", "SajorWpfApp1.csproj", "{D55579FD-0F7C-4051-B862-00C85DCECC4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D55579FD-0F7C-4051-B862-00C85DCECC4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D55579FD-0F7C-4051-B862-00C85DCECC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D55579FD-0F7C-4051-B862-00C85DCECC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D55579FD-0F7C-4051-B862-00C85DCECC4D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3EE1664-2336-4B4B-AD2D-8F000107B716}
+	EndGlobalSection
+EndGlobal
