@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE Update_Employee
-    @Emp_ID NVARCHAR(50),
+    @Emp_ID INT,
     @FirstName NVARCHAR(50) = NULL,
     @LastName NVARCHAR(50) = NULL,
     @Age NVARCHAR(50) = NULL,
@@ -14,3 +14,4 @@ BEGIN
         [Position] = @Position
     WHERE [Emp_ID] = @Emp_ID;
 END
+
