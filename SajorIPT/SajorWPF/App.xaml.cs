@@ -57,6 +57,8 @@ namespace SajorWPF
         {
             using var scope = _serviceProvider!.CreateScope();
             var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            // Note: For production, consider using migrations (dotnet ef migrations add/update)
+            // EnsureCreated() is used here for simplicity in this minimal MVVM demo
             dbContext.Database.EnsureCreated();
         }
 
