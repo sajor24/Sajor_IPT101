@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SajorWPF.ViewModels;
 
 namespace SajorWPF
 {
@@ -16,9 +17,13 @@ namespace SajorWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly PersonViewModel? _viewModel;
+
+        public MainWindow(PersonViewModel viewModel)
         {
             InitializeComponent();
+            _viewModel = viewModel;
+            DataContext = _viewModel;
         }
     }
 }
