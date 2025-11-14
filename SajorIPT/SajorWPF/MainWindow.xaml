@@ -1,27 +1,35 @@
-﻿<Window x:Class="SajorWPF.MainWindow"
+﻿<Window x:Class="SajorIPT101.SajorWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SajorWPF"
+        xmlns:local="clr-namespace:SajorIPT101.SajorWPF"
+        xmlns:views="clr-namespace:SajorIPT101.SajorWPF.Views"
+        xmlns:viewmodels="clr-namespace:SajorIPT101.SajorWPF.ViewModels"
         mc:Ignorable="d"
-        Title="Employee" Height="450" Width="800">
-    <Grid Background="#FFD75F5F">
-        <Label Content="First Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-        <TextBox Width="150" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,10,0,0"/>
+        Title="Employee Management System" Height="600" Width="1000">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        
+        <DataTemplate DataType="{x:Type viewmodels:AddEmployeeViewModel}">
+            <views:AddEmployeeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:EditEmployeeViewModel}">
+            <views:EditEmployeeView />
+        </DataTemplate>
+    </Window.Resources>
 
-        <Label Content="Last Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,45,0,0"/>
-        <TextBox x:Name="txtLastName" Width="150" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,45,0,0"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-        <Label Content="Age:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,80,0,0"/>
-        <TextBox Width="50" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,80,0,0"/>
+        <views:EmployeesView DataContext="{Binding EmployeesViewModel}" />
 
-        <Label Content="Position:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,115,0,0"/>
-        <TextBox  Width="150" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,115,0,0"/>
-
-        <Button Content="Add" Width="80" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="125,148,0,0"/>
-
-        <TextBlock HorizontalAlignment="Right" Margin="420,35,0,0" TextWrapping="Wrap" Text="Employee System" VerticalAlignment="Top" Height="115" Width="338" FontSize="40"/>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=20}" Margin="27,217,42,29"/>
+        <Grid Grid.Row="0" Background="#80000000" Visibility="{Binding IsModalOpen, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Border Background="White" Width="500" Height="auto" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20" CornerRadius="10">
+                <ContentControl Content="{Binding CurrentModalViewModel}" />
+            </Border>
+        </Grid>
     </Grid>
 </Window>

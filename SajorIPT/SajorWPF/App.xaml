@@ -1,7 +1,7 @@
-﻿<Application x:Class="SajorWPF.App"
+﻿<Application x:Class="SajorIPT101.SajorWPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:SajorWPF"
+             xmlns:local="clr-namespace:SajorIPT101.SajorWPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          
