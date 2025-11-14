@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "l7L1Fu0YEAM=",
+  "dgSpecHash": "IRxxRQ6XXIw=",
   "success": true,
-  "projectFilePath": "D:\\Sajor\\SajorIPT101Solution1\\SajorDomain\\SajorDomain.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/runner/work/Sajor_IPT101/Sajor_IPT101/SajorIPT/SajorDomain/SajorDomain.csproj",
+  "expectedPackageFiles": [
+    "/home/runner/work/Sajor_IPT101/.codeql-scratch/dbs/csharp/working/packages/microsoft.netcore.app.ref/9.0.10/microsoft.netcore.app.ref.9.0.10.nupkg.sha512",
+    "/home/runner/work/Sajor_IPT101/.codeql-scratch/dbs/csharp/working/packages/microsoft.windowsdesktop.app.ref/9.0.10/microsoft.windowsdesktop.app.ref.9.0.10.nupkg.sha512",
+    "/home/runner/work/Sajor_IPT101/.codeql-scratch/dbs/csharp/working/packages/microsoft.aspnetcore.app.ref/9.0.10/microsoft.aspnetcore.app.ref.9.0.10.nupkg.sha512"
+  ],
   "logs": []
 }
