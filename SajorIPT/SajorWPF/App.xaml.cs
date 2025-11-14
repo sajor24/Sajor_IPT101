@@ -25,6 +25,9 @@ namespace SajorWPF
             ConfigureServices(serviceCollection);
             _serviceProvider = serviceCollection.BuildServiceProvider();
 
+            // Initialize database
+            InitializeDatabase();
+
             var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
             mainWindow.Show();
         }
@@ -48,6 +51,13 @@ namespace SajorWPF
 
             // Windows
             services.AddTransient<MainWindow>();
+        }
+
+        private void InitializeDatabase()
+        {
+            using var scope = _serviceProvider!.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            dbContext.Database.EnsureCreated();
         }
 
         protected override void OnExit(ExitEventArgs e)
