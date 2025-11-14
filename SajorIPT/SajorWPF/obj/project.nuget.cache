@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4m66IzZ0XWA=",
+  "dgSpecHash": "+YxC4Bsg9mg=",
   "success": true,
-  "projectFilePath": "D:\\Sajor\\SajorIPT101Solution1\\SajorWPF\\SajorWPF.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/runner/work/Sajor_IPT101/Sajor_IPT101/SajorIPT/SajorWPF/SajorWPF.csproj",
+  "expectedPackageFiles": [
+    "/home/runner/.nuget/packages/microsoft.windowsdesktop.app.ref/9.0.11/microsoft.windowsdesktop.app.ref.9.0.11.nupkg.sha512"
+  ],
   "logs": []
 }
