@@ -17,7 +17,12 @@ namespace SajorWPF.Services
 
         public string GetConnectionString(string name)
         {
-            return _configuration.GetConnectionString(name) ?? string.Empty;
+            var connectionString = _configuration.GetConnectionString(name);
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                throw new InvalidOperationException($"Connection string '{name}' not found in appsettings.json");
+            }
+            return connectionString;
         }
 
         public IConfiguration Configuration => _configuration;

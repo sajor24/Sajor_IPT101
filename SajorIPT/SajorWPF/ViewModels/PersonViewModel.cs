@@ -50,7 +50,7 @@ namespace SajorWPF.ViewModels
 
         public async Task AddPersonAsync(Person person)
         {
-            person.CreatedAt = DateTime.Now;
+            person.CreatedAt = DateTime.UtcNow;
             await _personRepository.AddAsync(person);
             await LoadPeopleAsync();
         }
