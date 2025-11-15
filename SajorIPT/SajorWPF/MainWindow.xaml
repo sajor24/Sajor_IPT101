@@ -4,24 +4,60 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SajorWPF"
+        xmlns:converters="clr-namespace:SajorWPF.Converters"
         mc:Ignorable="d"
-        Title="Employee" Height="450" Width="800">
-    <Grid Background="#FFD75F5F">
-        <Label Content="First Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-        <TextBox Width="150" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,10,0,0"/>
+        Title="Employee Manager" Height="500" Width="900">
+    <Window.Resources>
+        <converters:PlaceholderConverter x:Key="PlaceholderConverter"/>
+    </Window.Resources>
+    <Grid Background="#FFD75F5F" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <Label Content="Last Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,45,0,0"/>
-        <TextBox x:Name="txtLastName" Width="150" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,45,0,0"/>
+        <!-- Input Form -->
+        <StackPanel Grid.Column="0" Margin="10">
+            <TextBlock Text="Employee Form" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" Foreground="White"/>
+            
+            <Label Content="First Name:" Foreground="White"/>
+            <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" Height="30" Margin="0,0,0,10"/>
 
-        <Label Content="Age:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,80,0,0"/>
-        <TextBox Width="50" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,80,0,0"/>
+            <Label Content="Last Name:" Foreground="White"/>
+            <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" Height="30" Margin="0,0,0,10"/>
 
-        <Label Content="Position:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,115,0,0"/>
-        <TextBox  Width="150" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,115,0,0"/>
+            <Label Content="Age:" Foreground="White"/>
+            <TextBox Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}" Height="30" Margin="0,0,0,10"/>
 
-        <Button Content="Add" Width="80" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="125,148,0,0"/>
+            <Label Content="Position:" Foreground="White"/>
+            <TextBox Text="{Binding Position, UpdateSourceTrigger=PropertyChanged}" Height="30" Margin="0,0,0,20"/>
 
-        <TextBlock HorizontalAlignment="Right" Margin="420,35,0,0" TextWrapping="Wrap" Text="Employee System" VerticalAlignment="Top" Height="115" Width="338" FontSize="40"/>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=20}" Margin="27,217,42,29"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                <Button Content="Add" Command="{Binding AddCommand}" Width="60" Height="35" Margin="5"/>
+                <Button Content="Update" Command="{Binding UpdateCommand}" Width="60" Height="35" Margin="5"/>
+                <Button Content="Delete" Command="{Binding DeleteCommand}" Width="60" Height="35" Margin="5"/>
+                <Button Content="Clear" Command="{Binding ClearCommand}" Width="60" Height="35" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Employee List -->
+        <StackPanel Grid.Column="1" Margin="10">
+            <TextBlock Text="Employee List" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" Foreground="White" HorizontalAlignment="Center"/>
+            
+            <DataGrid ItemsSource="{Binding Employees}" 
+                      SelectedItem="{Binding SelectedEmployee}"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      Height="380"
+                      Background="White">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="*"/>
+                    <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="*"/>
+                    <DataGridTextColumn Header="Age" Binding="{Binding Age}" Width="60"/>
+                    <DataGridTextColumn Header="Position" Binding="{Binding Position}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
     </Grid>
 </Window>
