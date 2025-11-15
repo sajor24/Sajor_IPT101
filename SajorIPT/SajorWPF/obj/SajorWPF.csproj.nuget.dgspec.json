@@ -10,7 +10,7 @@
         "projectUniqueName": "/home/runner/work/Sajor_IPT101/Sajor_IPT101/SajorIPT/SajorWPF/SajorWPF.csproj",
         "projectName": "SajorWPF",
         "projectPath": "/home/runner/work/Sajor_IPT101/Sajor_IPT101/SajorIPT/SajorWPF/SajorWPF.csproj",
-        "packagesPath": "/home/runner/.nuget/packages/",
+        "packagesPath": "/home/runner/work/Sajor_IPT101/.codeql-scratch/dbs/csharp/working/packages",
         "outputPath": "/home/runner/work/Sajor_IPT101/Sajor_IPT101/SajorIPT/SajorWPF/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
