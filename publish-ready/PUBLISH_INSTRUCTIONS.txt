@@ -1,0 +1,36 @@
+🚀 SUPER EASY PUBLISHING INSTRUCTIONS
+
+=== OPTION 1: NETLIFY (EASIEST) ===
+1. Go to: netlify.com
+2. Drag the entire "publish-ready" folder to the page
+3. Get instant link!
+4. Share with your jowa: https://yourapp.netlify.app
+
+=== OPTION 2: GITHUB PAGES ===
+1. Go to: github.com/sajor24/SajorIPT
+2. Click Settings > Pages
+3. Source: Deploy from branch
+4. Branch: main, Folder: / (root)
+5. Save
+6. Link: https://sajor24.github.io/SajorIPT/docs/
+
+=== OPTION 3: SURGE.SH ===
+1. Install: npm install -g surge
+2. Run: surge publish-ready/
+3. Choose domain name
+4. Get instant link!
+
+=== WHAT TO SEND YOUR JOWA ===
+"Hey babe! 💕 Made something special for you:
+[YOUR LINK HERE]
+Click 'Play Music' and explore! Made with love 💖"
+
+=== FEATURES ===
+✅ Panalangin background music
+✅ Your beautiful photos
+✅ Love letters
+✅ Anniversary countdown
+✅ Mobile-friendly
+✅ Works offline
+
+💕 Perfect romantic surprise! 💕

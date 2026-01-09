@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love Mami 💕</title>
+    <style>
+        :root {
+            --primary-pink: #FFB6C1;
+            --soft-peach: #FFDAB9;
+            --light-pink: #FFF0F5;
+            --rose: #FF69B4;
+            --white: #FFFFFF;
+            --text-dark: #4A4A4A;
+            --shadow: rgba(255, 182, 193, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--light-pink) 0%, var(--soft-peach) 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+        }
+
+        .home-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .heart-animation {
+            animation: heartbeat 1.5s ease-in-out infinite;
+            font-size: 4rem;
+            margin: 2rem 0;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .girlfriend-name {
+            font-size: 2.5rem;
+            color: var(--rose);
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px var(--shadow);
+        }
+
+        .daily-message-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .quick-link {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .quick-link:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .music-toggle {
+            background: var(--rose);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .music-toggle:hover {
+            background: #FF1493;
+            transform: translateY(-2px);
+        }
+
+        .page-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: none;
+        }
+
+        .page-container.active {
+            display: block;
+        }
+
+        .page-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .btn-back {
+            background: var(--rose);
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            margin-right: 1rem;
+        }
+
+        .memories-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .memory-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .memory-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .letter-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            text-align: left;
+        }
+
+        .letter-content {
+            line-height: 1.8;
+            margin-top: 1rem;
+        }
+
+        .letter-content p {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+    </audio>
+
+    <div class="home-container" id="homePage">
+        <div class="heart-animation">
+            <span class="heart">💖</span>
+        </div>
+        
+        <h1 class="girlfriend-name">For My Love Mami 💕</h1>
+        
+        <div class="daily-message-card">
+            <h3>💌 Today's Message</h3>
+            <p>You're my favorite person in the whole world 🌍</p>
+        </div>
+
+        <div class="quick-links">
+            <a href="#" onclick="showPage('letters')" class="quick-link">
+                <span class="icon">💌</span>
+                <span>Love Letters</span>
+            </a>
+            <a href="#" onclick="showPage('pictures')" class="quick-link">
+                <span class="icon">📸</span>
+                <span>Your Picture</span>
+            </a>
+            <a href="#" onclick="showPage('countdown')" class="quick-link">
+                <span class="icon">⏰</span>
+                <span>Countdown</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="page-container" id="lettersPage">
+        <div class="page-header">
+            <a href="#" onclick="showPage('home')" class="btn-back">← Back</a>
+            <h1>💌 Love Letters</h1>
+        </div>
+        <div class="letter-card">
+            <h3>To My Love Mami</h3>
+            <div class="letter-content">
+                <p>My Dearest Mami,</p>
+                <p>Every moment I spend talking to you feels like a dream I never want to wake up from. Kahit online lang tayo nagkakausap, you still manage to brighten my darkest days.</p>
+                <p>I love how you get excited about the simplest things, how you share your thoughts with me, and how you make everything feel lighter just by being there.</p>
+                <p>Thank you for being you, for being mine, and for making every day an adventure.</p>
+                <p>Forever yours,<br>Your Dadi</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-container" id="picturesPage">
+        <div class="page-header">
+            <a href="#" onclick="showPage('home')" class="btn-back">← Back</a>
+            <h1>📸 Your Picture</h1>
+        </div>
+        <div class="memories-timeline">
+            <div class="memory-card">
+                <div class="memory-image">
+                    <img src="https://via.placeholder.com/300x200/FFB6C1/FFFFFF?text=Sunset+Love" alt="Sunset Love">
+                </div>
+            </div>
+            <div class="memory-card">
+                <div class="memory-image">
+                    <img src="https://via.placeholder.com/300x200/FFDAB9/FFFFFF?text=Cathedral+Adventure" alt="Cathedral">
+                </div>
+            </div>
+            <div class="memory-card">
+                <div class="memory-image">
+                    <img src="https://via.placeholder.com/300x200/FFF0F5/FFFFFF?text=Polaroid+Memories" alt="Polaroid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-container" id="countdownPage">
+        <div class="page-header">
+            <a href="#" onclick="showPage('home')" class="btn-back">← Back</a>
+            <h1>⏰ Anniversary Countdown</h1>
+        </div>
+        <div class="daily-message-card">
+            <h2>💕 Days Together 💕</h2>
+            <div style="font-size: 3rem; color: var(--rose); margin: 1rem 0;" id="daysTogether">0</div>
+            <div>Days of Love</div>
+        </div>
+    </div>
+
+    <div class="music-player">
+        <button class="music-toggle" onclick="toggleMusic()">
+            <span id="musicIcon">🎵</span> <span id="musicText">Play Music</span>
+        </button>
+    </div>
+
+    <script>
+        let isPlaying = false;
+        const music = document.getElementById('bgMusic');
+
+        function toggleMusic() {
+            const icon = document.getElementById('musicIcon');
+            const text = document.getElementById('musicText');
+            
+            if (isPlaying) {
+                music.pause();
+                icon.textContent = '🎵';
+                text.textContent = 'Play Music';
+                isPlaying = false;
+            } else {
+                music.play().catch(e => console.log('Audio play failed'));
+                icon.textContent = '🔊';
+                text.textContent = 'Pause Music';
+                isPlaying = true;
+            }
+        }
+
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.home-container, .page-container').forEach(page => {
+                page.classList.remove('active');
+                page.style.display = 'none';
+            });
+
+            // Show selected page
+            if (pageId === 'home') {
+                document.getElementById('homePage').style.display = 'block';
+            } else {
+                document.getElementById(pageId + 'Page').classList.add('active');
+                document.getElementById(pageId + 'Page').style.display = 'block';
+            }
+        }
+
+        // Initialize countdown
+        function updateCountdown() {
+            const startDate = new Date('2024-01-01'); // Change this to your anniversary date
+            const now = new Date();
+            const daysTogether = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+            document.getElementById('daysTogether').textContent = daysTogether;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 86400000); // Update daily
+    </script>
+</body>
+</html>

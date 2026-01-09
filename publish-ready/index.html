@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love Mami 💕</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="bgMusic" loop>
+        <source src="music/beautiful-in-white.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="home-container" id="homePage">
+        <div class="heart-animation">
+            <span class="heart">💖</span>
+        </div>
+        
+        <h1 class="girlfriend-name">For My Love Mami 💕</h1>
+        
+        <div class="daily-message-card">
+            <h3>💌 Today's Message</h3>
+            <p class="daily-message" id="dailyMessage"></p>
+            <button class="btn-refresh" onclick="refreshMessage()">Get New Message ✨</button>
+        </div>
+
+        <div class="surprise-section">
+            <button class="btn-surprise" onclick="showSurprise()">
+                ✨ Tap for a Surprise ✨
+            </button>
+            <div class="surprise-message" id="surpriseMsg"></div>
+        </div>
+
+        <div class="quick-links">
+            <a href="#" onclick="showPage('letters')" class="quick-link">
+                <span class="icon">💌</span>
+                <span>Love Letters</span>
+            </a>
+            <a href="#" onclick="showPage('pictures')" class="quick-link">
+                <span class="icon">📸</span>
+                <span>Your Picture</span>
+            </a>
+            <a href="#" onclick="showPage('countdown')" class="quick-link">
+                <span class="icon">⏰</span>
+                <span>Countdown</span>
+            </a>
+        </div>
+
+        <button class="music-toggle" onclick="toggleMusic()">
+            <span id="musicIcon">🔇</span> <span id="musicText">Play Music</span>
+        </button>
+    </div>
+
+    <div class="page-container" id="lettersPage" style="display:none;">
+        <div class="page-header">
+            <a href="#" onclick="showPage('home')" class="btn-back">← Back</a>
+            <h1>💌 Love Letters</h1>
+        </div>
+        <div class="letter-card">
+            <h3>To My Love Mami</h3>
+            <p class="letter-date">Written with love</p>
+            <div class="letter-content">
+                <p>My Dearest Mami,</p>
+                <p>Every moment I spend talking to you feels like a dream I never want to wake up from. Kahit online lang tayo nagkakausap, you still manage to brighten my darkest days. Your smile in photos, your laugh sa calls, and the way you tell stories — they've become my favorite parts of every day.</p>
+                <p>I love how you get excited about the simplest things, how you share your thoughts with me, and how you make everything feel lighter just by being there, kahit sa screen lang.</p>
+                <p>Thank you for being you, for being mine, and for making every day an adventure.</p>
+                <p>Forever yours,<br>Your Dadi</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-container" id="picturesPage" style="display:none;">
+        <div class="page-header">
+            <a href="#" onclick="showPage('home')" class="btn-back">← Back</a>
+            <h1>📸 Your Picture</h1>
+        </div>
+        <div class="memories-timeline">
+            <div class="memory-card">
+                <div class="memory-image">
+                    <img src="photos/photo1.jpg" alt="Memory">
+                </div>
+            </div>
+            <div class="memory-card">
+                <div class="memory-image">
+                    <img src="photos/photo2.jpg" alt="Memory">
+                </div>
+            </div>
+            <div class="memory-card">
+                <div class="memory-image">
+                    <img src="photos/photo3.jpg" alt="Memory">
+                </div>
+            </div>
+            <div class="memory-card">
+                <div class="memory-image">
+                    <img src="photos/photo4.jpg" alt="Sunset Love">
+                </div>
+            </div>
+            <div class="memory-card">
+                <div class="memory-image">
+                    <img src="photos/photo5.jpg" alt="Cathedral Adventure">
+                </div>
+            </div>
+            <div class="memory-card">
+                <div class="memory-image">
+                    <img src="photos/photo6.jpg" alt="Polaroid Memories">
+                </div>
+            </div>
+            <div class="memory-card">
+                <div class="memory-image">
+                    <img src="photos/S.jpg" alt="Memory">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-container" id="countdownPage" style="display:none;">
+        <div class="page-header">
+            <a href="#" onclick="showPage('home')" class="btn-back">← Back</a>
+            <h1>⏰ Anniversary Countdown</h1>
+        </div>
+        <div class="countdown-container">
+            <div class="countdown-card">
+                <h2>💕 Days Together 💕</h2>
+                <div class="countdown-display">
+                    <div class="countdown-number" id="daysTogether">0</div>
+                    <div class="countdown-label">Days of Love</div>
+                </div>
+            </div>
+            <div class="countdown-card">
+                <h2>🎉 Next Anniversary 🎉</h2>
+                <div class="countdown-grid">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">0</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">0</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">0</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">0</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+                <p class="anniversary-date" id="nextDate"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

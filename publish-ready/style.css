@@ -1,0 +1,272 @@
+:root {
+    --primary-pink: #FFB6C1;
+    --rose: #FF69B4;
+    --light-pink: #FFF0F5;
+    --white: #FFFFFF;
+    --text-dark: #333333;
+    --shadow: rgba(255, 105, 180, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--primary-pink) 0%, var(--light-pink) 100%);
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.home-container, .page-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.heart-animation {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.heart {
+    font-size: 4rem;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.girlfriend-name {
+    text-align: center;
+    color: var(--rose);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px var(--shadow);
+}
+
+.daily-message-card, .letter-card, .memory-card, .countdown-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px var(--shadow);
+}
+
+.daily-message-card h3, .letter-card h3, .countdown-card h2 {
+    color: var(--rose);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.daily-message {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.btn-refresh, .btn-surprise, .btn-back {
+    background: var(--rose);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-refresh:hover, .btn-surprise:hover, .btn-back:hover {
+    background: var(--primary-pink);
+    transform: scale(1.05);
+}
+
+.surprise-section {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.surprise-message {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: var(--rose);
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.surprise-message.show {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.quick-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.quick-link {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: all 0.3s;
+    box-shadow: 0 2px 10px var(--shadow);
+}
+
+.quick-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px var(--shadow);
+}
+
+.quick-link .icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    flex: 1;
+    text-align: center;
+    color: var(--rose);
+}
+
+.letter-content {
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+.letter-content p {
+    margin-bottom: 1rem;
+}
+
+.letter-date {
+    color: #999;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.memories-timeline {
+    display: grid;
+    gap: 2rem;
+}
+
+.memory-image {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.memory-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.countdown-container {
+    display: grid;
+    gap: 2rem;
+}
+
+.countdown-display {
+    text-align: center;
+}
+
+.countdown-number {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--rose);
+}
+
+.countdown-label {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-top: 0.5rem;
+}
+
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.countdown-item {
+    text-align: center;
+}
+
+.countdown-item .countdown-number {
+    font-size: 2rem;
+}
+
+.countdown-item .countdown-label {
+    font-size: 0.9rem;
+}
+
+.anniversary-date {
+    text-align: center;
+    color: var(--rose);
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.music-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--rose);
+    color: white;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px var(--shadow);
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    
+    .girlfriend-name {
+        font-size: 1.5rem;
+    }
+    
+    .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .quick-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
