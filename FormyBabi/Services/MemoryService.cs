@@ -43,7 +43,7 @@ public class MemoryService
                 SaveMemories();
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             // If there's any error, use default memories
             _memories = new List<Memory>
